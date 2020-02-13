@@ -1,5 +1,5 @@
 {% set name = "mdf_forge" %}
-{% set version = "0.7.5" %}
+{% set version = "0.7.6" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: cbbf9dede4c41ea131949c173e18073f25d49c82d77e7b113a860fa033bfcab2
+  sha256: 97c303a67bfda36919eba66e43dd1afc9a1060b4d1d6e6841abab9f9c0b07b5f
 
 build:
   noarch: python
