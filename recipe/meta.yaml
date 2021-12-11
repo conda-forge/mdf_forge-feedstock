@@ -1,5 +1,5 @@
 {% set name = "mdf_forge" %}
-{% set version = "0.7.6" %}
+{% set version = "0.7.7" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 97c303a67bfda36919eba66e43dd1afc9a1060b4d1d6e6841abab9f9c0b07b5f
+  sha256: 14d7e9c0c8edc2232379ad4175b95aac9cab4afca50ec8e699617bbc174e5400
 
 build:
   noarch: python
   number: 0
-  script: "{{ PYTHON }} -m pip install . -vv"
+  script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
@@ -37,7 +37,7 @@ about:
   license: Apache-2.0
   license_family: Apache
   license_file: LICENSE
-  summary: 'Forge is the Python package to access data in the Materials Data Facility'
+  summary: Forge is the Python package to access data in the Materials Data Facility
 
   description: |
     Forge is the Materials Data Facility Python package to interface and 
