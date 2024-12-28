@@ -6,20 +6,20 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: 5489051412dddb513cc21b9ca70cd11849f684e37a510789ed870ce6e5f17daa
 
 build:
   noarch: python
-  number: 0
+  number: 1
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
-    - python >=3.5
+    - python {{ python_min }}
     - pip
   run:
-    - python >=3.5
+    - python >={{ python_min }}
     - pip
     - mdf_toolbox >=0.4.10
     - globus-sdk >=1.7.0
@@ -27,6 +27,8 @@ requirements:
     - tqdm >=4.19.4
 
 test:
+  requires:
+    - python {{ python_min }}
   imports:
     - mdf_forge
   commands:
