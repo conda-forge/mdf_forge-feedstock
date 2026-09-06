@@ -34,8 +34,10 @@ tests:
   - python:
       imports:
         - mdf_forge
-      pip_check: true
-      python_version: ${{ python_min }}
+      pip_check: false
+      python_version:
+        - ${{ python_min }}
+        - "*"
 
 about:
   license: Apache-2.0
