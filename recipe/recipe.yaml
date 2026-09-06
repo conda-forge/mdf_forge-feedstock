@@ -1,0 +1,57 @@
+schema_version: 1
+
+context:
+  name: mdf_forge
+  version: "0.8.0"
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name }}-${{ version }}.tar.gz
+  sha256: 5489051412dddb513cc21b9ca70cd11849f684e37a510789ed870ce6e5f17daa
+
+build:
+  number: 2
+  noarch: python
+  script: ${{ PYTHON }} -m pip install . -vv
+
+requirements:
+  host:
+    - python ${{ python_min }}.*
+    - pip
+    - setuptools
+  run:
+    - python >=${{ python_min }}
+    - pip
+    - mdf_toolbox >=0.4.10
+    - globus-sdk >=1.7.0
+    - requests >=2.18.4
+    - tqdm >=4.19.4
+
+tests:
+  - python:
+      imports:
+        - mdf_forge
+      pip_check: false
+      python_version:
+        - ${{ python_min }}
+        - "*"
+
+about:
+  license: Apache-2.0
+  license_file: LICENSE
+  summary: Forge is the Python package to access data in the Materials Data Facility
+  description: |
+    Forge is the Materials Data Facility Python package to interface and
+    leverage the MDF Data Discovery service. Forge allows users to perform
+    simple queries and facilitiates moving and synthesizing results.
+  homepage: https://github.com/materials-data-facility/forge
+  repository: https://github.com/materials-data-facility/forge
+  documentation: http://mdf-forge.readthedocs.io/
+
+extra:
+  recipe-maintainers:
+    - WardLT
+    - jan-janssen
